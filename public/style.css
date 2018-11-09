@@ -1,3 +1,11 @@
 .body{
   height: 100%;
 }
+
+.loginBox {
+  width: 40%;
+  border-color: lightgray;
+  border-style: solid;
+  padding: 10px;
+  border-radius: 5%;
+}
