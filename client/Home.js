@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Header from './Header';
 import QueryHeadline from './QueryHeadline';
 import Search from './Search';
+import { Paper } from '@material-ui/core'
 
 class Home extends Component {
 
@@ -12,10 +13,12 @@ class Home extends Component {
   	return (
   	  <div style={{ alignItems: 'center' }}>
   	  	<Header />
+
   	  	<QueryHeadline />
   	  	<Router>
-  	  	<Route path='/search' component={Search} />
+  	  	  {/*<Route path='/search' component={Search} />*/}
   	  	</Router>
+
   	    <Footer />
   	  </div>
   	)

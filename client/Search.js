@@ -6,8 +6,8 @@ class Search extends Component {
   render(){
 
   	return (
-  	  <div>
-  	    <TextField></TextField>
+  	  <div style={{ display: "flex", justifyContent:"center" }}>
+  	    <TextField style={{ fontFamily: "courier" }} placeholder="Give it a whirl!"></TextField>
   	  </div>
   	)
   }
