@@ -1,0 +1,38 @@
+import React, { Component } from 'React';
+
+class QueryHeadline extends Component {
+  constructor(){
+  	super()
+  	this.state = {
+  	  headline: '',
+  	  fullHeadline: 'Welcome to LitReviews Digest./Have you ever wanted to quickly find book reviews/But do not know where to easily access them?/Look no further!/We are here to curate the reviews for you!/Feel free to type in a book in the search bar.',
+  	  idx: 0
+  	}
+  	this.wordSlide = this.wordSlide.bind(this);
+  }
+
+  wordSlide(){
+  	const {headline, fullHeadline, idx} = this.state;
+  	if(fullHeadline[idx] == '/'){
+  	  this.setState({ headline: this.state.fullHeadline[this.state.idx+1], idx: this.state.idx+2 })
+  	}
+	else if(idx!== fullHeadline.length){
+  	  this.setState({ headline: this.state.headline+this.state.fullHeadline[this.state.idx], idx: this.state.idx+1})
+  	} 
+  }
+
+  componentDidMount(){
+  	if(this.state.idx < this.state.fullHeadline.length){setInterval(()=>{this.wordSlide()},(100))}
+  }
+
+  render(){
+
+  	return (
+  	  <div style={{ display: 'flex', justifyContent: 'center', padding: '125px'}}>
+  	    <h2 style={{ fontFamily: 'monospace'}}>{this.state.headline}</h2>
+  	  </div>
+  	)
+  }
+}
+
+export default QueryHeadline;
