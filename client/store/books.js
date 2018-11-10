@@ -2,17 +2,23 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 const inititalState = {
+  input: '',
   reviews: [],
   google: [],
   nytimes: [],
   penguin: []
 };
 
+const CHANGE_INPUT = 'CHANGE_INPUT'
 const GET_BOOKS_REVIEWS = 'GET_BOOKS_REVIEWS';
 const GET_BOOKS_GOOGLE = 'GET_BOOKS_GOOGLE';
 const GET_BOOKS_NYTIMES = 'GET_BOOKS_NYTIMES';
 const GET_BOOKS_PENGUIN = 'GET_BOOKS_PENGUIN';
 
+export const changeInput = input => ({
+  type: CHANGE_INPUT,
+  input
+})
 const getBooksWithReviews = books => ({
   type: GET_BOOKS_REVIEWS,
   books
@@ -105,6 +111,12 @@ export const _getBooksPenguin = (input, type) => async dispatch => {
 
 export const booksReducer = (state=inititalState, action) => {
   switch(action.type){
+  	case CHANGE_INPUT:
+  	  return {
+  	    ...state,
+  	    input: action.input
+  	  }
+
   	case GET_BOOKS_REVIEWS:
   	console.log(action.books)
   	  return {

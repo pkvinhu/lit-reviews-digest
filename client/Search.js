@@ -3,15 +3,15 @@ import { TextField, IconButton, Icon } from '@material-ui/core';
 import { _getBooksWithReviews,
 		 _getBooksGoogle,
 		 _getBooksNYTimes,
-		 _getBooksPenguin } from './store/books.js';
+		 _getBooksPenguin,
+		 changeInput } from './store/books.js';
 import { connect } from 'react-redux';
-import { Loader } from 'react-loaders';
+import ReactLoading from 'react-loading';
 
 class Search extends Component {
   constructor(){
   	super()
   	this.state={
-  	  input: '',
   	  loading: false
   	}
     this.handleChange = this.handleChange.bind(this);
@@ -24,21 +24,21 @@ class Search extends Component {
   }
 
   handleChange(e){
-  	const { name, value } = e.target;
-  	this.setState({ [name]: value })
+  	const { value } = e.target;
+  	const { input, changeInput } = this.props;
+  	changeInput(value);
   }
 
-  handleClick(e){
-  	e.preventDefault();
-  	const { input } = this.state;
-  	const { getAllBooks, books, history } = this.props;
+  handleClick(){
+  	const { getAllBooks, history, input } = this.props;
   	const { load } = this;
   	load()
   	getAllBooks(input)
   	setTimeout(()=>{history.push('/search/results')}, 4000)
   }
   render(){
-  	const { input, loading } = this.state;
+  	const { loading } = this.state;
+  	const { input } = this.props;
   	const { handleChange, handleClick } = this;
   	return (
   	  <div style={{ display: "flex", 
@@ -46,7 +46,7 @@ class Search extends Component {
   	  				flexDirection: 'column',
   	  				padding: '30%', paddingTop: '0px' }}>
   	  	{loading ? 
-  	  		(<Loader type="pacman" color="yellow" style={{height:'150px', width:'100px'}} active />) :
+  	  		(<ReactLoading type="cylon" color="black" height={150} width={100} />) :
   	    (<div><TextField placeholder="Give it a whirl!"
   	    		   name="input"
 	          		value={input}
@@ -62,8 +62,9 @@ class Search extends Component {
 }
 
 const mapStateToProps = ({books}, {history}) => {
-
+  const { input } = books;
   return {
+  	input,
   	books,
   	history
   }
@@ -76,6 +77,7 @@ const mapDispatchToProps = (dispatch) => ({
   	dispatch(_getBooksNYTimes(input));
   	dispatch(_getBooksPenguin(input));
   },
+  changeInput: (input) => dispatch(changeInput(input)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
