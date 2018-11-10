@@ -43,6 +43,7 @@ class SignUp extends Component {
 	          name="name"
 	          label="name"
 	          value={name}
+            required={true}
 	          onChange={handleChange}
 	          margin="normal"
 	          variant="outlined"
@@ -52,6 +53,7 @@ class SignUp extends Component {
 	          name="email"
 	          label="email"
 	          value={email}
+            required={true}
 	          onChange={handleChange}
 	          margin="normal"
 	          variant="outlined"
@@ -60,6 +62,7 @@ class SignUp extends Component {
             id="standard-password-input"
 	          name="password"
 	          label="password"
+            type="password"
 	          value={password}
             required={true}
 	          onChange={handleChange}

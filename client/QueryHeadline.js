@@ -1,5 +1,6 @@
 import React, { Component } from 'React';
 import Search from './Search';
+import { connect } from 'react-redux';
 
 class QueryHeadline extends Component {
   constructor(){
@@ -34,15 +35,20 @@ class QueryHeadline extends Component {
 
   render(){
   	const { search } = this.state;
+  	const { history } = this.props;
   	return (
   	<div>
   	  <div style={{ display: 'flex', justifyContent: 'center', padding: '125px'}}>
   	    <h2 style={{ fontFamily: 'courier'}}>{this.state.headline}</h2>
   	  </div>
-  	  {search && <Search />}
+  	  {search && <Search history={history}/>}
   	 </div>
   	)
   }
 }
 
-export default QueryHeadline;
+const mapStateToProps = (state, {history}) => ({
+	history
+})
+
+export default connect(mapStateToProps)(QueryHeadline);
