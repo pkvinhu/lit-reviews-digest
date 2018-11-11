@@ -7,7 +7,7 @@ class Footer extends Component {
 
   	return (
   	  <div style={{ height: '70px', position: 'fixed', bottom: '0'}}>
-  	    <Typography variant='body1'>Powered by Kevin Hu</Typography>
+  	    {/*<Typography variant='body1'>Powered by Kevin Hu</Typography>*/}
   	  </div>
   	)
   }

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { IconButton, Icon } from '@material-ui/core'
+import BooksGrid from './BooksGrid';
+import ReviewsCarousel from './ReviewsCarousel';
 
 class SearchResults extends Component {
   constructor(){
@@ -28,12 +32,20 @@ class SearchResults extends Component {
   }
 
   render() {
-  	const {books, input} = this.props;
+  	const { books, input, history } = this.props;
   	const { headline } = this.state;
   	console.log(input)
   	return (
-  	  <div style={{ paddingTop: '45%' }}>
+  	  <div style={{ paddingTop: '20%', 
+  	  				display: 'flex', 
+  	  				justifyContent: 'center',
+  	  				flexDirection: 'column' }}>
+  	  <div style={{display: 'flex'}}>
+  	    <IconButton component={Link} to='/'><Icon>arrow_back</Icon></IconButton>
+  	  </div>
   	    <h2 style={{ fontFamily: 'courier'}}>{headline}</h2>
+  	    <BooksGrid />
+  	    <ReviewsCarousel />
   	  </div>
   	)
   }
@@ -42,6 +54,7 @@ class SearchResults extends Component {
 const mapStateToProps = ({books}, {history}) => ({
 	books,
 	input: books.input,
+	history
 })
 
 export default connect(mapStateToProps)(SearchResults);

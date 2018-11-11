@@ -27,18 +27,18 @@ class QueryHeadline extends Component {
  //  	}
  //  }
 
- //  componentDidMount(){
- //  	const { headline, fullHeadline, idx } = this.state;
- //  	const time = fullHeadline[idx] == '/' ? 1000 : 125;
- //  	if(idx < fullHeadline.length){setInterval(()=>{this.wordSlide()},time)}
- //  }
+  // componentDidMount(){
+  // 	const { headline, fullHeadline, idx } = this.state;
+  // 	const time = fullHeadline[idx] == '/' ? 1000 : 125;
+  // 	if(idx < fullHeadline.length){setInterval(()=>{this.wordSlide()},time)}
+  // }
 
   render(){
   	const { search } = this.state;
   	const { history } = this.props;
   	return (
   	<div>
-  	  <div style={{ display: 'flex', justifyContent: 'center', padding: '125px'}}>
+  	  <div style={{ display: 'flex', justifyContent: 'center', padding: '100px'}}>
   	    <h2 style={{ fontFamily: 'courier'}}>{this.state.headline}</h2>
   	  </div>
   	  {search && <Search history={history}/>}

@@ -69,7 +69,7 @@ export const _getBooksGoogle = (input, type) => async dispatch => {
 	const googleBooks = response
   							.data
   							.items
-  							.slice(0,3)
+  							.slice(0,1)
   							.map(each=>{return {title: each.volumeInfo.title, 
 	  											purchase: each.saleInfo.buyLink || 'Not Available', 
 	  											//price: each.saleInfo.retailPrice.amount,
@@ -87,6 +87,7 @@ export const _getBooksNYTimes = (input, type) => async dispatch => {
   const data = response
 					.data
 					.results
+					.slice(0,1)
 					.map(each => {return {author: each.book_author,
 										  title: each.book_title,
 										  byline: each.byline,
