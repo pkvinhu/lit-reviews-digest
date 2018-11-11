@@ -22,17 +22,22 @@ class BookCard extends Component {
   }
 
   render(){
-  	const { book, img } = this.props;
+  	const { book, img, bookImg } = this.props;
   	const { expanded } = this.state;
   	const { handleExpandClick } = this;
   	console.log('Book: ', book, ' Image: ', img);
   	return (
-  	  <Card className={{maxWidth: 400}}>
+  	  <Card className={{maxWidth: 400, height: 'auto'}}>
   	    <img src={img} style={{width: '150px', height:'auto'}}/>
-  	    <img src={book.link || book.imgLink || null} style={{alignSelf: 'center', width: '100%', height:'300px'}}/>
-  	    <CardContent><Typography variant="title">{book.title}</Typography></CardContent>
-  	    <CardContent><Typography >Author: {book.authors || book.author || book.authorweb}</Typography></CardContent>
-  	    {book.purchase && <CardContent><Typography ><a href="{book.purchase}">Purchase here</a></Typography></CardContent>}
+  	    <CardMedia image={book.link || book.imgLink || bookImg || null} style={{width: '100%', height:'300px'}}/>
+  	    <CardContent>
+  	    <Typography variant="title" style={{width:'100%'}}paragraph>{book.title || book.titleweb}</Typography>
+  	    <Typography paragraph>Author: {book.authors || book.author || book.authorweb}</Typography>
+  	    {book.purchase ? 
+  	    	(<Typography paragraph><a href="{book.purchase}">Purchase here</a></Typography>) :
+            (<Typography paragraph>Purchase Not Available</Typography>)
+  	    }
+  	    </CardContent>
   	    <IconButton onClick={handleExpandClick}
   	    			aria-expanded={expanded}
             		aria-label="Show more">
@@ -46,9 +51,14 @@ class BookCard extends Component {
   }
 }
 
-const mapStateToProps = (state, {book, img}) => ({
-	book,
-	img
-})
+const mapStateToProps = (state, ownProps) => {
+	const { book, img } = ownProps;
+
+	return {
+		book,
+		img,
+		bookImg: ownProps.bookImg ? ownProps.bookImg : null
+	}
+}
 
 export default connect(mapStateToProps)(BookCard);

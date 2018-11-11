@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { IconButton, Icon } from '@material-ui/core'
+import { IconButton, Icon, Button } from '@material-ui/core'
 import BooksGrid from './BooksGrid';
 import ReviewsCarousel from './ReviewsCarousel';
 
@@ -36,14 +36,15 @@ class SearchResults extends Component {
   	const { headline } = this.state;
   	console.log(input)
   	return (
-  	  <div style={{ paddingTop: '20%', 
-  	  				display: 'flex', 
+  	  <div style={{ display: 'flex', 
   	  				justifyContent: 'center',
-  	  				flexDirection: 'column' }}>
+  	  				flexDirection: 'column', 
+  	  				border: '1px solid black'}}>
   	  <div style={{display: 'flex'}}>
-  	    <IconButton component={Link} to='/'><Icon>arrow_back</Icon></IconButton>
+  	    <Button component={Link} to='/'><Icon>arrow_back</Icon>Go Back</Button>
   	  </div>
-  	    <h2 style={{ fontFamily: 'courier'}}>{headline}</h2>
+  	    <h2 style={{ fontFamily: 'courier',
+  					 padding: '0px 90px 0px 90px'}}>{headline}</h2>
   	    <BooksGrid />
   	    <ReviewsCarousel />
   	  </div>

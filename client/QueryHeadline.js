@@ -27,11 +27,11 @@ class QueryHeadline extends Component {
  //  	}
  //  }
 
-  // componentDidMount(){
-  // 	const { headline, fullHeadline, idx } = this.state;
-  // 	const time = fullHeadline[idx] == '/' ? 1000 : 125;
-  // 	if(idx < fullHeadline.length){setInterval(()=>{this.wordSlide()},time)}
-  // }
+ //  componentDidMount(){
+ //  	const { headline, fullHeadline, idx } = this.state;
+ //  	const time = fullHeadline[idx] == '/' ? 1000 : 125;
+ //  	if(idx < fullHeadline.length){setInterval(()=>{this.wordSlide()},time)}
+ //  }
 
   render(){
   	const { search } = this.state;

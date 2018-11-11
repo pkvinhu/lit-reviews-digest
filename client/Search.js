@@ -41,13 +41,11 @@ class Search extends Component {
   	const { input } = this.props;
   	const { handleChange, handleClick } = this;
   	return (
-  	  <div style={{ display: "flex", 
-  	  				justifyContent:"center", 
-  	  				flexDirection: 'column',
-  	  				padding: '30%', paddingTop: '0px' }}>
+  	  <div style={{ display: 'flex',
+  	  				justifyContent:"center"}}>
   	  	{loading ? 
   	  		(<ReactLoading type="cylon" color="black" height={150} width={100} />) :
-  	    (<div><TextField placeholder="Give it a whirl!"
+  	    (<div style={{ maxWidth:'200px'}}><TextField placeholder="Give it a whirl!"
   	    		   name="input"
 	          		value={input}
 	          		onChange={handleChange}
