@@ -1,7 +1,8 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jwt-simple');
 const express = require('express');
 const router = express.Router();
 const { User } = require('../models');
+const secret = process.env.JWT_SECRET || 'secret';
 
 const authenticate = (req, res, next) => {
   const token = req.headers.authorization;
@@ -32,10 +33,11 @@ router.post('/', (req, res, next) => {
     } 
   })
   .then( user => {
+  	console.log(user.name)
     if (!user) {
       return next({ status: 401 })
     }
-    const token = jwt.sign({ id: user.id }, 
+    const token = jwt.encode({ id: user.id }, 
     						process.env.JWT_SECRET)
     console.log(token);
     res.send({ token })
@@ -44,6 +46,7 @@ router.post('/', (req, res, next) => {
 })
 
 router.get('/', (req, res, next)=> {
+  console.log(req.user)
   if (!req.user){
     // console.log('no user')
     return next({ status: 401 })

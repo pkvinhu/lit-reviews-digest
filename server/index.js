@@ -13,7 +13,7 @@ const userRouter = require('./api/user');
 const goodReadsRouter = require('./api/goodreads')
 const { authenticate } = auth;
 
-//app.use(authenticate);
+app.use(authenticate);
 app.use(morgan('dev')); 
 app.use(express.json());
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
@@ -23,7 +23,7 @@ app.use(express.static(path.join(process.cwd(), 'public')))
 //   graphiql: true
 // }));
 
-app.use('/api/auth', [ authenticate, authRouter ]);
+app.use('/api/auth', authRouter );
 app.use('/api/users', userRouter);
 app.use('/api/books', goodReadsRouter);
 
