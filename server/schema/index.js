@@ -1,5 +1,5 @@
 
-const graphql = require('graphql');
+/*const graphql = require('graphql');
 const _ = require('lodash');
 const { GraphQLObjectType, 
 		GraphQLString,
@@ -140,4 +140,4 @@ const Mutation = new GraphQLObjectType({
 module.exports = new GraphQLSchema({
   query: RootQuery,
   mutation: Mutation
-});
+});*/

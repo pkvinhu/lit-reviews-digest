@@ -26,6 +26,8 @@ const User = conn.define('user', {
       isEmail: true,
     },
   }
+}, {
+  include: [History]
 });
 
 module.exports = User;

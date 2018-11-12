@@ -10,7 +10,7 @@ const init = db.init;
 const auth = require('./api/auth');
 const authRouter = auth.router;
 const userRouter = require('./api/user');
-const goodReadsRouter = require('./api/goodreads')
+const historyRouter = require('./api/history')
 const { authenticate } = auth;
 
 app.use(authenticate);
@@ -25,7 +25,7 @@ app.use(express.static(path.join(process.cwd(), 'public')))
 
 app.use('/api/auth', authRouter );
 app.use('/api/users', userRouter);
-app.use('/api/books', goodReadsRouter);
+app.use('/api/history', historyRouter);
 
 init()
 .then(() => app.listen(port || 3000, () => {
