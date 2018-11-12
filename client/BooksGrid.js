@@ -17,7 +17,7 @@ class BookGrid extends Component {
   	  			   padding: '0px 90px 0px 90px',
   	  			   border: '1px solid black'}}>
 
-  	    <GridList cols={yesPenguin ? 3 : 2} cellHeight={5} style={{display:'flex', 
+  	    <GridList cols={yesPenguin && books[2].length ? 3 : 2} cellHeight={5} style={{display:'flex', 
   	    						   height: 'auto',
   	    						   width:'100%',
   	    						   flexWrap: 'wrap',

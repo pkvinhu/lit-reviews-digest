@@ -2,11 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { Slide } from 'material-auto-rotating-carousel';
 import { connect } from 'react-redux';
 import { Card, CardContent, CardMedia } from '@material-ui/core';
+import StarRatingComponent from 'react-star-rating-component';
 
 class CarouselSlide extends Component {
 
   render() {
-  	const { review } = this.props;
+  	const { review, title } = this.props;
   	const images = {
   	  'NY Times': 'https://www.logolynx.com/images/logolynx/2d/2d92bf6113e642f0244f482f9d109912.jpeg',
   	  'Guardian': 'https://digitalhealth.london/wp-content/uploads/2017/01/The-Guardian-Logo-Font.jpg',
@@ -25,15 +26,16 @@ class CarouselSlide extends Component {
   	return (
   	<Slide media={<img src={review.logo || images[review.source] || images['No Image']} style={{height:'300px', width:'300px', color: 'white'}}/>}
   		   style={{ height: 'auto', backgroundColor: 'white' }}
-  		   title={review.snippet}
-  	       subtitle={<div><body style={{color: 'black'}}>{review.snippet}</body><a href={review.link}>Read the full review here.</a><br/><br/><br/><br/><br/></div>}
+  		   title={<div><div style={{color: 'black'}}>{title}</div><br/><StarRatingComponent starCount={5} value={review.stars}/></div>}
+  	       subtitle={<div><body style={{color: 'black'}}><div>Reviewed by {review.source}</div><br/><div>{review.snippet}</div></body><a href={review.link}>Read the full review here.</a><br/><br/><br/><br/><br/></div>}
 		   />
   	)
   }
 }
 
-const mapStateToProps = (state, { review }) => ({
+const mapStateToProps = (state, { review, title }) => ({
   review,
+  title
 })
 
 export default connect(mapStateToProps)(CarouselSlide);

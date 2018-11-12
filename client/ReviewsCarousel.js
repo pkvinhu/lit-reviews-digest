@@ -24,7 +24,7 @@ class ReviewCarousel extends Component {
   }
 
   render(){
-  	const { reviews } = this.props;
+  	const { reviews, title } = this.props;
   	const { open } = this.state;
   	const { handleClose, handleOpen } = this;
   	console.log(reviews)
@@ -32,14 +32,15 @@ class ReviewCarousel extends Component {
   	<div style={{display: 'flex', 
   	  			   justifyContent: 'center', 
   	  			   padding: '50px 90px 50px 90px'}}>
-  	    <AutoRotatingCarousel open={open}
+  	    {reviews.length && 
+  	    	(<AutoRotatingCarousel open={open}
 							  onClose={handleClose}>
   	      {reviews.map((each, idx) => {
   	      	return (
-  	      	  <CarouselSlide key={idx} review={each}/>
+  	      	  <CarouselSlide key={idx} review={each} title={title}/>
   	      	)
   	      })}
-  	    </AutoRotatingCarousel>
+  	    </AutoRotatingCarousel>)}
   	  <Button onClick={handleOpen}>
   	    <Icon>bookmarks</Icon>Click for Reviews</Button>
   	</div>
@@ -48,10 +49,11 @@ class ReviewCarousel extends Component {
 }
 
 const mapStateToProps = ({books}) => {
-  const { reviews } = books.reviews[0];
+  const { reviews, title } = books.reviews[0];
   console.log(books.reviews);
   return {
-  	reviews
+  	reviews,
+  	title
   }
 }
 

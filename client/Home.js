@@ -8,6 +8,7 @@ import { Paper } from '@material-ui/core'
 import Login from './Login';
 import SignUp from './SignUp';
 import SearchResults from './SearchResults';
+import BooksMap from './BooksMap';
 
 class Home extends Component {
 
@@ -16,12 +17,14 @@ class Home extends Component {
   	const renderLogin = ({ history }) => <Login history={history} />;
   	const renderQueryHeadline = ({ history }) => <QueryHeadline history={history} />;
   	const renderSearchResults = ({ history }) => <SearchResults history={history} />;
+  	const renderMap = ({ history}) => <BooksMap history={history} />;
   	console.log(window.localStorage)
   	return (
   	<Router>
   	  <div style={{ alignItems: 'center' }}>
   	  	<Route path='/' component={Header}/>
   	  	<Route exact path='/' render={renderQueryHeadline} />
+  	  	<Route exact path='/maps' render={renderMap} />
   	    <Route exact path='/login' render={renderLogin} />
   	  	<Route exact path='/signup' render={renderSignUp} />
   	  	<Route exact path='/search/results' render={renderSearchResults} />
