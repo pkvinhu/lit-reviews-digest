@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../models');
+const { User, History } = require('../models');
 module.exports = router;
 
 //create a history instance, associate with a user
 router.post('/:userId', async (req, res, next) => {
   try{
-    const user = await User.findById(req.params.id);
-    const reviewRecord = await History.create({...req.body, userId: user.id})
+  	console.log(req.body)
+  	const { date, link, snippet, source, logo, stars} = req.body;
+    const user = await User.findById(req.params.userId);
+    const reviewRecord = await History.create({date, link, snippet, source, logo, stars, userId: user.id})
     res.send(reviewRecord);
   }
   catch(er) {next(er)}

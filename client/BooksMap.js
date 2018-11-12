@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GoogleMapReact from 'google-map-react';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Typography } from '@material-ui/core';
 import { _getLocation } from './store/map'
 
 const AnyReactComponent = ({ text }) => (
   <div style={{
     color: 'white', 
-    background: 'grey',
     padding: '15px 10px',
     display: 'inline-flex',
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: '100%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
+    backgroundImage: 'url("https://img.icons8.com/color/24/000000/marker.png")'
   }}>
-    {text}
   </div>
 );
 
@@ -35,12 +34,16 @@ class BooksMap extends Component {
 
   handleClick(){
   	const { searchInput } = this.state;
-  	_getLocation(searchInput);
+  	this.props._getLocation(searchInput);
+  }
+
+  componentDidMount(){
+
   }
 
   render(){
   const { handleClick, handleChange } = this;
-  const { lat, lng } = this.props;
+  const { lat, lng, location } = this.props;
   const { searchInput } = this.state;
   console.log(lat, lng);
   	return (
@@ -51,10 +54,12 @@ class BooksMap extends Component {
 	               onChange={handleChange}
 	               margin="normal"
 	               variant="outlined"></TextField>
-	    <Button onClick={handleClick}>Search</Button></div>
+	    <Button onClick={handleClick}>Search</Button>
+	    {location.length ? (<Typography variant="subtitle" style={{padding: '35px 0px 0px 10px'}}>{location}</Typography>) : null}</div>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyByU4bW7h9R5-RGODV_2E5EN1hCkca-DeM' }}
-          defaultCenter={{lat: 40.7048321, lng: -74.0089692}}
+          defaultCenter={{lat, lng}}
+          center={{lat, lng}}
           defaultZoom={16}
         >
           <AnyReactComponent
@@ -69,10 +74,12 @@ class BooksMap extends Component {
 }
 
 const mapStateToProps = ({ map }, { history }) => {
-  const { lat, lng } = map;
+  const { lat, lng, location } = map;
+  console.log(lat, lng)
   return {
     lat,
-	lng
+	lng,
+	location
   }
 }
 

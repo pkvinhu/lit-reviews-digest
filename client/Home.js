@@ -9,6 +9,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import SearchResults from './SearchResults';
 import BooksMap from './BooksMap';
+import BookmarkedHistory from './BookmarkedHistory';
 
 class Home extends Component {
 
@@ -24,6 +25,7 @@ class Home extends Component {
   	  <div style={{ alignItems: 'center' }}>
   	  	<Route path='/' component={Header}/>
   	  	<Route exact path='/' render={renderQueryHeadline} />
+  	  	<Route exact path='/history' component={BookmarkedHistory} />  	  	
   	  	<Route exact path='/maps' render={renderMap} />
   	    <Route exact path='/login' render={renderLogin} />
   	  	<Route exact path='/signup' render={renderSignUp} />

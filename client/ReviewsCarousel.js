@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
-import { IconButton, Icon, Button } from '@material-ui/core';
-import Carousel from 'react-carousel';
+import { IconButton, Icon, Button, Typography } from '@material-ui/core';
 import CarouselSlide from './CarouselSlide';
 
 class ReviewCarousel extends Component {
@@ -32,17 +31,17 @@ class ReviewCarousel extends Component {
   	<div style={{display: 'flex', 
   	  			   justifyContent: 'center', 
   	  			   padding: '50px 90px 50px 90px'}}>
-  	    {reviews.length && 
-  	    	(<AutoRotatingCarousel open={open}
+  	    {reviews.length ? 
+  	    	(<div><AutoRotatingCarousel open={open}
 							  onClose={handleClose}>
   	      {reviews.map((each, idx) => {
   	      	return (
   	      	  <CarouselSlide key={idx} review={each} title={title}/>
   	      	)
   	      })}
-  	    </AutoRotatingCarousel>)}
-  	  <Button onClick={handleOpen}>
-  	    <Icon>bookmarks</Icon>Click for Reviews</Button>
+  	    </AutoRotatingCarousel>
+		<Button onClick={handleOpen} style={{backgroundColor:"#FF6347"}}>
+  	    <Icon>bookmarks</Icon>Click for Reviews</Button></div>) : (<Typography variant="title">There are no reviews!</Typography>)}
   	</div>
   	)
   }

@@ -8,7 +8,7 @@ import { logout } from './store/auth';
 class Header extends Component {
 
   render() {
-  	const { token } = this.props;
+  	const { token, logout } = this.props;
   	return (
   	  <AppBar color='secondary' style={{ display: 'flex',
   	  				   flexDirection: 'row',
@@ -45,7 +45,7 @@ class Header extends Component {
 			{token && <Button component={Link} to='/history'><Icon>history</Icon> History</Button>}
   	      	{!token ? 
   	      		(<Button component={Link} to='/login'><Icon> change_history</Icon> Login</Button>) :
-  	      		(<Button onClick={logout} component={Link} to='/'><Icon> change_history</Icon> Logout</Button>)
+  	      		(<Button onClick={logout} component={Link} to='/login'><Icon> change_history</Icon> Logout</Button>)
   	      }
   	      </Paper>
   	    </Menu>

@@ -4,12 +4,14 @@ import { authReducer } from './auth'
 import { userReducer } from './user'
 import { booksReducer } from './books';
 import { mapReducer } from './map';
+import { historyReducer } from './history';
 
 const reducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   books: booksReducer,
-  map: mapReducer
+  map: mapReducer,
+  history: historyReducer,
 })
 
 export const store = createStore(reducer, applyMiddleware(thunk));

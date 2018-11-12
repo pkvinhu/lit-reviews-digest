@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const conn = require('./conn');
+const { History } = require('./index');
 
 const User = conn.define('user', {
   id: {

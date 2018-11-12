@@ -1,10 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import { Slide } from 'material-auto-rotating-carousel';
 import { connect } from 'react-redux';
-import { Card, CardContent, CardMedia } from '@material-ui/core';
+import { Button, Icon } from '@material-ui/core';
 import StarRatingComponent from 'react-star-rating-component';
+import { _addToHistory } from './store/history'
 
 class CarouselSlide extends Component {
+  constructor(){
+  	super()
+  	this.handleClick=this.handleClick.bind(this);
+  }
+
+  handleClick(){
+  	const { review, _addToHistory, user } = this.props;
+  	_addToHistory(review, user)
+  }
 
   render() {
   	const { review, title } = this.props;
@@ -22,20 +32,44 @@ class CarouselSlide extends Component {
   	  'The Millions': 'https://i.pinimg.com/originals/b4/c6/a9/b4c6a9b85a421ccd3b161ddb775a5a52.jpg',
   	  'No Image': 'https://imgix.bustle.com/lovelace/uploads/892/96a005a0-0adc-0133-45a5-0a2ca390b447.png?w=646&fit=max&auto=format&q=70'
   	}
-  	console.log(review);
+  	const { handleClick } = this;
   	return (
+  	<div>
   	<Slide media={<img src={review.logo || images[review.source] || images['No Image']} style={{height:'300px', width:'300px', color: 'white'}}/>}
   		   style={{ height: 'auto', backgroundColor: 'white' }}
-  		   title={<div><div style={{color: 'black'}}>{title}</div><br/><StarRatingComponent starCount={5} value={review.stars}/></div>}
-  	       subtitle={<div><body style={{color: 'black'}}><div>Reviewed by {review.source}</div><br/><div>{review.snippet}</div></body><a href={review.link}>Read the full review here.</a><br/><br/><br/><br/><br/></div>}
+  		   title={<div>
+  		   	<div style={{color: 'black'}}>{title}</div>
+  		   	<Button onClick={handleClick} style={{backgroundColor:"#FF6347"}}><Icon>bookmark</Icon> Save for later</Button>
+  		   	<StarRatingComponent starCount={5} value={review.stars}/>
+  		   	</div>}
+  	       subtitle={<div>
+  	       	<body style={{color: 'black'}}>
+  	       	<div>Reviewed by {review.source}</div>
+  	       	<br/>
+  	       	<div>{review.snippet}</div>
+  	       	</body>
+  	       	<a href={review.link}>Read the full review here.</a>
+  	       	<br/><br/><br/><br/><br/>
+  	       	</div>}
 		   />
+	</div>
   	)
   }
 }
 
-const mapStateToProps = (state, { review, title }) => ({
-  review,
-  title
+const mapStateToProps = ({auth}, { review, title }) => {
+  console.log(auth)
+  return {
+  	user: auth.user,
+    review,
+    title
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  _addToHistory: (review, user) => dispatch(_addToHistory(review, user))
 })
 
-export default connect(mapStateToProps)(CarouselSlide);
+export default connect(mapStateToProps, mapDispatchToProps)(CarouselSlide);
+
+

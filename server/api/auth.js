@@ -40,7 +40,7 @@ router.post('/', (req, res, next) => {
     const token = jwt.encode({ id: user.id }, 
     						process.env.JWT_SECRET)
     console.log(token);
-    res.send({ token })
+    res.send({ token, user })
   })
   .catch(next)
 })

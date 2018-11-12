@@ -1,13 +1,19 @@
 import axios from 'axios';
 
+const initialState = {
+  auth:'',
+  user: {}
+}
+
 const SET_AUTH = 'SET_AUTH';
 
-const _setAuth = auth => ({
+const _setAuth = (auth, user) => ({
   type: SET_AUTH,
   auth,
+  user
 });
 
-export const exchangeTokenForAuth = history => {
+export const exchangeTokenForAuth = (history, user) => {
   return dispatch => {
     const token = window.localStorage.getItem('token');
 
@@ -23,7 +29,7 @@ export const exchangeTokenForAuth = history => {
       })
       .then(response => response.data)
       .then(auth => {
-        return dispatch(_setAuth(auth));
+        return dispatch(_setAuth(auth, user));
       })
       .then(() => {
         //Things you should do when user first logs
@@ -52,14 +58,14 @@ const login = (credentials, history) => {
       .then(response => response.data)
       .then(data => {
         window.localStorage.setItem('token', data.token);
-        dispatch(exchangeTokenForAuth(history));
+        dispatch(exchangeTokenForAuth(history, data.user));
       });
   };
 };
 
-const authReducer = (state = {}, action) => {
+const authReducer = (state = initialState, action) => {
   if (action.type === SET_AUTH) {
-    state = action.auth;
+    state = {auth: action.auth, user: action.user};
   }
 
   return state;

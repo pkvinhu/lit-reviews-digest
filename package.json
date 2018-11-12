@@ -35,6 +35,7 @@
     "react": "^16.6.1",
     "react-burger-menu": "^2.5.4",
     "react-dom": "^16.6.1",
+    "react-geocode": "^0.1.2",
     "react-loaders": "^3.0.1",
     "react-loading": "^2.0.3",
     "react-redux": "^5.1.0",
