@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardContent } from '@material-ui/core';
+import { Card, CardContent, Typography } from '@material-ui/core';
 import { _getHistory } from './store/history'
 
 class BookmarkedHistory extends Component {
@@ -14,13 +14,17 @@ class BookmarkedHistory extends Component {
   	const { history, user } = this.props;
   	return (
   	  <div>
-  	  {history.length ? history.map(each => {
+  	  {history.length ? (<div>
+  	  	{history.map(each => {
   	  	return (
   	  	  <Card>
-  	  	  <CardContent>{each.title}</CardContent>
+  	  	  <CardContent>{each.snippet}</CardContent>
   	  	  </Card>
   	  	)
   	  })}
+  	  </div>) : 
+  	  (<Typography>You do not have anything bookmarked!</Typography>)
+  	}
   	  </div>
   	)
   }
