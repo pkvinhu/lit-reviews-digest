@@ -38,9 +38,7 @@ class Login extends Component {
               id="outlined-email-input"
               label="Email"
               type="email"
-              // helperText="required*"
               name="email"
-              // autoComplete="email"
               margin="normal"
               required={true}
               variant="filled"
@@ -52,9 +50,7 @@ class Login extends Component {
               id="standard-password-input"
               label="Password"
               type="password"
-              // helperText="required*"
               name="password"
-              // autoComplete="current-password"
               margin="normal"
               required={true}
               variant="filled"

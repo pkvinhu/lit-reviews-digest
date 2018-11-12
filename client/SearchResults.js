@@ -38,8 +38,7 @@ class SearchResults extends Component {
   	return (
   	  <div style={{ display: 'flex', 
   	  				justifyContent: 'center',
-  	  				flexDirection: 'column', 
-  	  				border: '1px solid black'}}>
+  	  				flexDirection: 'column'}}>
   	  <div style={{display: 'flex'}}>
   	    <Button component={Link} to='/'><Icon>arrow_back</Icon>Go Back</Button>
   	  </div>

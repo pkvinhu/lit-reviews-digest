@@ -14,14 +14,15 @@ class BookGrid extends Component {
   				  padding: '0px 90px 0px 90px'}}>Toggle arrows for summaries</h3>*/}
   	  <div style={{display: 'flex', 
   	  			   justifyContent: 'center', 
-  	  			   padding: '0px 90px 0px 90px',
-  	  			   border: '1px solid black'}}>
+  	  			   padding: '0px 90px 0px 90px'}}>
 
-  	    <GridList cols={yesPenguin && books[2].length ? 3 : 2} cellHeight={5} style={{display:'flex', 
-  	    						   height: 'auto',
-  	    						   width:'100%',
-  	    						   flexWrap: 'wrap',
-  	    						   overflow: 'hidden',}}>
+  	    <GridList cols={yesPenguin && books[2].length ? 3 : 2} 
+  	    		  cellHeight={5} 
+  	    		  style={{display:'flex', 
+					      height: 'auto',
+					      width:'100%',
+					      flexWrap: 'wrap',
+					      overflow: 'hidden',}}>
   	      {books[0].map(each=>{
   	      	return (
   	      	  <GridListTile cols={1} style={{ display: 'flex', height: 'auto'}}>
