@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "start:dev": "npm run webpack -- --watch --NODE_ENV=production & DATABASE_URL=postgres://localhost:5432/stackathon1 JWT_SECRET=secret nodemon server",
+    "start:dev": "npm run webpack -- --watch --mode=development NODE_ENV=production & DATABASE_URL=postgres://localhost:5432/stackathon1 JWT_SECRET=secret nodemon server",
     "start": "node ./server/index.js",
     "postinstall": "npm run webpack"
   },
