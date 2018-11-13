@@ -30,6 +30,8 @@ app.use('/api/history', historyRouter);
 
 
 init()
-.then(() => app.listen(port, () => {
-  console.log('listening')
-}));
+  .then(() => app.listen(port, () => {
+	console.log('listening')
+  }))
+  .catch(err => console.log(err));
+
