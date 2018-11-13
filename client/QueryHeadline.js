@@ -1,4 +1,4 @@
-import React, { Component } from 'React';
+import React, { Component } from 'react';
 import Search from './Search';
 import { connect } from 'react-redux';
 
