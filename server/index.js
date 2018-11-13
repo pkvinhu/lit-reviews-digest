@@ -3,7 +3,7 @@ const app = express();
 const morgan = require('morgan');
 //const graphqlHTTP = require('express-graphql');
 const schema = require('./schema');
-const port = 3000;
+const port = process.env.PORT || 3000;
 const db = require('./models')
 const path = require('path');
 const init = db.init;
@@ -28,6 +28,6 @@ app.use('/api/users', userRouter);
 app.use('/api/history', historyRouter);
 
 init()
-.then(() => app.listen(port || 3000, () => {
+.then(() => app.listen(port, () => {
   console.log('listening')
 }));
