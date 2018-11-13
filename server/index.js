@@ -15,7 +15,7 @@ const { authenticate } = auth;
 
 app.use(authenticate);
 app.use(morgan('dev')); 
-app.use(express.favicon());
+// app.use(express.favicon());
 app.use(express.json());
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.static(path.join(process.cwd(), 'public')))
