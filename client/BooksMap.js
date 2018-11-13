@@ -55,7 +55,7 @@ class BooksMap extends Component {
 	               margin="normal"
 	               variant="outlined"></TextField>
 	    <Button onClick={handleClick}>Search</Button>
-	    {location.length ? (<Typography variant="subtitle" style={{padding: '35px 0px 0px 10px'}}>{location}</Typography>) : null}</div>
+	    {location.length ? (<Typography variant="subtitle1" style={{padding: '35px 0px 0px 10px'}}>{location}</Typography>) : null}</div>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyByU4bW7h9R5-RGODV_2E5EN1hCkca-DeM' }}
           defaultCenter={{lat, lng}}
