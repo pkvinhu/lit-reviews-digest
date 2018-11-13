@@ -12,7 +12,7 @@ module.exports = {
   	  	test:/\.js$/,
   	  	loader: 'babel-loader',
   	  	exclude: /node_modules/,
-        babelrc: true
+        options: { babelrc: true }
   	  }
   	]
   }
