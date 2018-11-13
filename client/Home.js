@@ -19,7 +19,6 @@ class Home extends Component {
   	const renderQueryHeadline = ({ history }) => <QueryHeadline history={history} />;
   	const renderSearchResults = ({ history }) => <SearchResults history={history} />;
   	const renderMap = ({ history}) => <BooksMap history={history} />;
-  	console.log(window.localStorage)
   	return (
   	<Router>
   	  <div style={{ alignItems: 'center' }}>

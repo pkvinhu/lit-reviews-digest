@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
 import { Typography, IconButton, Icon, Button, AppBar, Toolbar, Paper } from '@material-ui/core';
+// import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { slide as Menu } from 'react-burger-menu';
 import { logout } from './store/auth';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.state = {
+      collapsed: true
+    };
+  }
+
+  toggleNavbar() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  }
 
   render() {
   	const { token, logout } = this.props;
   	return (
-  	  <AppBar color='secondary' style={{ display: 'flex',
+	<AppBar color='secondary' style={{ display: 'flex',
   	  				   flexDirection: 'row',
   	  				   height: 'auto', 
   	  				   position: 'static', 
@@ -67,3 +82,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+
+
+
+  	  /**/
