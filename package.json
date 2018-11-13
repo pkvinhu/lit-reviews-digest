@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "start:dev": "npm run webpack -- --watch --mode=development &DATABASE_URL=postgres://localhost:5432/stackathon1 JWT_SECRET=secret nodemon server"
+    "start:dev": "npm run webpack -- --watch --mode=development &DATABASE_URL=postgres://localhost:5432/stackathon1 JWT_SECRET=secret nodemon server",
+    "postinstall": "npm run webpack"
   },
   "keywords": [],
   "author": "",
