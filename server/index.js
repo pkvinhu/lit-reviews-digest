@@ -27,11 +27,8 @@ app.use('/api/auth', authRouter );
 app.use('/api/users', userRouter);
 app.use('/api/history', historyRouter);
 
-app.listen(port, () => {
-  console.log('listening')
-})
 
 init()
-.then(() => 
-  console.log('synced')
-);
+.then(() => app.listen(port, () => {
+  console.log('listening')
+}));
