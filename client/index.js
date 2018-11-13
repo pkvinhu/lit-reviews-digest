@@ -5,10 +5,10 @@ import { Provider } from 'react-redux';
 import { store } from './store'
 
 render(
-<Fragment>
+<div>
   <Provider store={store}>
     <Home />
   </Provider>
-</Fragment>,
+</div>,
   document.getElementById('app')
 )
