@@ -12,9 +12,7 @@ module.exports = {
   	  	test:/\.js$/,
   	  	loader: 'babel-loader',
   	  	exclude: /node_modules/,
-        options: {
-          babelrc: path.join(process.cwd(), './babelrc')
-        }
+        babelrc: true
   	  }
   	]
   }
