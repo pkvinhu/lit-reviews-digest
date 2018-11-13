@@ -17,7 +17,7 @@ class CarouselSlide extends Component {
   }
 
   render() {
-  	const { review, title, images } = this.props;
+  	const { review, title, images, user } = this.props;
   	const { handleClick } = this;
   	return (
   	<div>
@@ -25,7 +25,7 @@ class CarouselSlide extends Component {
   		   style={{ height: 'auto', backgroundColor: 'white' }}
   		   title={<div>
   		   	<div style={{color: 'black'}}>{title}</div>
-  		   	<Button onClick={handleClick} style={{backgroundColor:"#FF6347"}}><Icon>bookmark</Icon> Save for later</Button>
+  		   	{user.email && (<Button onClick={handleClick} style={{backgroundColor:"#FF6347"}}><Icon>bookmark</Icon> Save for later</Button>)}
   		   	<StarRatingComponent starCount={5} value={review.stars}/>
   		   	</div>}
   	       subtitle={<div>
